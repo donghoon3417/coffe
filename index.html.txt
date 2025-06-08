@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>커피 주문 폼</title>
+  <style>
+    body {
+      font-family: 'Arial';
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+      background-color: #f5f5f5;
+    }
+    h2 {
+      color: #333;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      gap: 15px;
+    }
+    input, select, button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #response {
+      margin-top: 20px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h2>커피 주문 폼</h2>
+  <form id="coffeeForm">
+    <label>이름:
+      <input type="text" id="name" required>
+    </label>
+    <label>커피 종류:
+      <select id="coffee">
+        <option value="ICE 아메리카노">ICE 아메리카노</option>
+        <option value="HOT 아메리카노">HOT 아메리카노</option>
+        <option value="ICE 카페라떼">ICE 카페라떼</option>
+        <option value="HOT 카페라떼">HOT 카페라떼</option>
+        <option value="바닐라라떼">바닐라라떼</option>
+        <option value="디카페인">디카페인</option>
+      </select>
+    </label>
+    <button type="submit">주문하기</button>
+  </form>  <div id="response"></div>  <script>
+    document.getElementById("coffeeForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const coffee = document.getElementById("coffee").value;
+      
+      // 향후 Google Apps Script Webhook이나 서버 연동 가능
+      document.getElementById("response").innerText = `✅ 주문 완료: ${name} - ${coffee}`;
+
+      // 입력창 초기화
+      document.getElementById("coffeeForm").reset();
+    });
+  </script></body>
+</html>
